@@ -13,8 +13,8 @@ export default async (req: ServerRequest) => {
   const parameter = splittedUrl[1].split("=");
   const text = decodeURI(parameter[1]);
 
-  const render = `<div class="container">
-  <svg viewBox="0 0 500 72" xmlns="http://www.w3.org/2000/svg">
+  const render = `
+  <svg viewBox="0 0 500 72" xmlns="http://www.w3.org/2000/svg" class="container">
     <defs>
       <pattern id="flashing_points" viewBox="0,0,13,13" width="1%" height="10%">
         <circle cx="7" cy="7" r="5" fill="#FF8F00"/>
@@ -30,17 +30,18 @@ export default async (req: ServerRequest) => {
     </clipPath>
     <rect width="500" height="72" fill="url(#normal_points)"/>
     <rect width="500" height="72" fill="url(#flashing_points)" clip-path="url(#moving_text)"/>
-  </svg>
-  <style>
-    .container { width: 100%; background: #121212; }
-    .text__animate { animation: 16s linear 0s infinite moving; }
-    @keyframes moving {
-      from { transform: translate(100%, 0px); }
-      to { transform: translate(-${2.5 * text.length}vw, 0px); }
-    }
-  </style>
-</div>`;
+    <style>
+      .container { width: 100%; background: #121212; }
+      .text__animate { animation: 16s linear 0s infinite moving; }
+      @keyframes moving {
+        from { transform: translate(100%, 0px); }
+        to { transform: translate(-${2.5 * text.length}vw, 0px); }
+      }
+    </style>
+  </svg>`;
 
-  const headers = new Headers([["content-type", "text/html; charset=UTF-8"]]);
+  const headers = new Headers([
+    ["content-type", "image/svg+xml; charset=UTF-8"],
+  ]);
   req.respond({ body: render, headers: headers });
 };
