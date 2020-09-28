@@ -11,7 +11,7 @@ export default async (req: ServerRequest) => {
   }
 
   const parameter = splittedUrl[1].split("=");
-  const text = parameter[1];
+  const text = decodeURI(parameter[1]);
 
   const render = `<div class="container">
   <svg viewBox="0 0 500 72" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +41,6 @@ export default async (req: ServerRequest) => {
   </style>
 </div>`;
 
-  const headers = new Headers([["content-type", "text/html"]]);
+  const headers = new Headers([["content-type", "text/html; charset=UTF-8"]]);
   req.respond({ body: render, headers: headers });
 };
