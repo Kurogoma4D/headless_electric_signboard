@@ -10,7 +10,9 @@ inspired from [github-profile-trophy](https://github.com/ryo-ma/github-profile-t
 
 Add this line where you want to display:
 
-`[![signboard](https://headless-electric-signboard.vercel.app/?text=xxx)](https://github.com/Kurogoma4D/headless_electric_signboard)`
+```
+[![signboard](https://headless-electric-signboard.vercel.app/?text=xxx)](https://github.com/Kurogoma4D/headless_electric_signboard)
+```
 
 then change `?text=` value to some text.
 
