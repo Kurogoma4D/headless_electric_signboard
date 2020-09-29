@@ -42,6 +42,7 @@ export default async (req: ServerRequest) => {
 
   const headers = new Headers([
     ["content-type", "image/svg+xml; charset=UTF-8"],
+    ["Cache-Control", "public, max-age=3600"],
   ]);
   req.respond({ body: render, headers: headers });
 };
