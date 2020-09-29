@@ -24,7 +24,7 @@ export default async (req: ServerRequest) => {
       </pattern>
     </defs>
     <clipPath id="moving_text">
-      <text x="0" y="60" font-size="2.5vw" class="text__animate" fill="white" font-weight="900">
+      <text x="0" y="60" font-size="60" class="text__animate" fill="white" font-weight="900">
         ${text}
       </text>
     </clipPath>
@@ -35,7 +35,7 @@ export default async (req: ServerRequest) => {
       .text__animate { animation: 16s linear 0s infinite moving; }
       @keyframes moving {
         from { transform: translate(100%, 0px); }
-        to { transform: translate(-${2.5 * text.length}vw, 0px); }
+        to { transform: translate(-${60 * text.length}px, 0px); }
       }
     </style>
   </svg>`;
